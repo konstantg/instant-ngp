@@ -212,6 +212,7 @@ __device__ float network_to_rgb(float val, ENerfActivation activation) {
 		case ENerfActivation::ReLU: return val > 0.0f ? val : 0.0f;
 		case ENerfActivation::Logistic: return tcnn::logistic(val);
 		case ENerfActivation::Exponential: return __expf(tcnn::clamp(val, -10.0f, 10.0f));
+		case ENerfActivation::Black: return 0.0f;
 		default: assert(false);
 	}
 	return 0.0f;
@@ -223,6 +224,7 @@ __device__ float network_to_rgb_derivative(float val, ENerfActivation activation
 		case ENerfActivation::ReLU: return val > 0.0f ? 1.0f : 0.0f;
 		case ENerfActivation::Logistic: { float density = tcnn::logistic(val); return density * (1 - density); };
 		case ENerfActivation::Exponential: return __expf(tcnn::clamp(val, -10.0f, 10.0f));
+		case ENerfActivation::Black: return 0.0f;
 		default: assert(false);
 	}
 	return 0.0f;

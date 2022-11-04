@@ -113,8 +113,9 @@ enum class ENerfActivation : int {
 	ReLU,
 	Logistic,
 	Exponential,
+	Black,
 };
-static constexpr const char* NerfActivationStr = "None\0ReLU\0Logistic\0Exponential\0\0";
+static constexpr const char* NerfActivationStr = "None\0ReLU\0Logistic\0Exponential\0Black\0\0";
 
 enum class EMeshSdfMode : int {
 	Watertight,
